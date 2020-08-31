@@ -18,6 +18,14 @@ class Batch:
         self._purchased_qty = qty
         self._allocations = set() # type: Set[OrderLine]
 
+    def __eq__(self, other):
+        if not isinstance(other, Batch):
+            return False
+        return other.reference == self.reference
+
+    def __hash__(self):
+        return hash(self.reference)
+
     @property
     def allocated_quantity(self) -> int:
         return sum(a.qty for a in self._allocations)
