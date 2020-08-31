@@ -15,6 +15,12 @@ def test_allocating_to_a_batch_reduces_the_available_quantity():
     batch.allocate(line)
     assert batch.available_quantity == 18
 
+def test_allocation_is_idempotent():
+    batch, line = make_batch_and_line("SMALL-TABLE", 20, 2)
+    batch.allocate(line)
+    batch.allocate(line)
+    assert batch.available_quantity == 18
+
 def test_can_only_deallocate_allocated_lines():
     batch, unallocated_line = make_batch_and_line("DECORATIVE-TRINKET", 20, 2)
     batch.deallocate(unallocated_line)
