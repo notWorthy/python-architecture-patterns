@@ -13,8 +13,12 @@ def make_batch_and_line(sku, batch_qty, line_qty):
 def test_allocating_to_a_batch_reduces_the_available_quantity():
     batch, line = make_batch_and_line("SMALL-TABLE", 20, 2)
     batch.allocate(line)
-
     assert batch.available_quantity == 18
+
+def test_can_only_deallocate_allocated_lines():
+    batch, unallocated_line = make_batch_and_line("DECORATIVE-TRINKET", 20, 2)
+    batch.deallocate(unallocated_line)
+    assert batch.available_quantity == 20
 
 def test_can_allocate_if_available_greater_than_required():
     large_batch, small_line = make_batch_and_line("ELEGEANT-LAMP", 20, 2)
