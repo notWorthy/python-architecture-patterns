@@ -19,3 +19,6 @@ class Batch:
 
     def allocate(self, line: OrderLine):
         self.available_quantity -= line.qty
+
+    def can_allocate(self, line: OrderLine):
+        return self.available_quantity >= line.qty
