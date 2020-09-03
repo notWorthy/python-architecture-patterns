@@ -1,3 +1,7 @@
-pytest
-
+# prod
+flask
 sqlalchemy
+
+# dev
+pytest
+requests
