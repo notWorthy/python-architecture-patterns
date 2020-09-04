@@ -1,5 +1,5 @@
 from adapters import repository
-import domain.model as model
+from domain import model
 
 def test_repository_can_save_a_batch(session):
     batch = model.Batch("batch1", "RUSTY-SOAPDISH", 100, eta=None)

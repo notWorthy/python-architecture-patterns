@@ -1,6 +1,6 @@
 import abc 
 
-import model
+from domain import model
 
 class AbstractRepository(abc.ABC):
     def add(self, batch: model.Batch):

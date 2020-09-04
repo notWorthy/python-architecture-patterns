@@ -6,7 +6,7 @@ class OutOfStock(Exception):
     pass
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class OrderLine:
     orderid: str
     sku: str
@@ -19,7 +19,7 @@ class Batch:
         self.sku = sku
         self.eta = eta
 
-        self._purchased_qty = qty
+        self._purchased_quantity = qty
         self._allocations = set() # type: Set[OrderLine]
 
     def __eq__(self, other):
@@ -43,7 +43,7 @@ class Batch:
 
     @property
     def available_quantity(self) -> int:
-        return self._purchased_qty - self.allocated_quantity
+        return self._purchased_quantity - self.allocated_quantity
 
     def can_allocate(self, line: OrderLine) -> bool:
         return self.sku == line.sku and self.available_quantity >= line.qty
