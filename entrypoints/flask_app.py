@@ -10,6 +10,9 @@ import adapters.repository as repository
 orm.start_mappers()
 get_session = sessionmaker(bind=create_engine(config.get_postgres_uri()))
 app = Flask(__name__)
+@app.route("/", methods=['GET'])
+def home():
+    return "Architecture Patterns with Python home."
 
 @app.route("/allocate", methods=['POST'])
 def allocate_endpoint():
