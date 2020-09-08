@@ -1,6 +1,13 @@
+ports:
+- port: 3000
+
 tasks:
-  - init: pip3 install -r ./requirements.txt 
-    command: 'echo "TODO: Replace with command to start project"'
+- init: > 
+    python3 -m pip install -r requirements.txt 
+  command: >
+    export FLASK_APP=src/flask_app &&
+    export FLASK_ENV=development &&
+    flask run -p 3000
 
 vscode:
   extensions:
