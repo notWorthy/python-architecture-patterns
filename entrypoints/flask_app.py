@@ -8,7 +8,8 @@ import adapters.orm as orm
 import adapters.repository as repository
 
 orm.start_mappers()
-get_session = sessionmaker(bind=create_engine(config.get_postgres_uri()))
+# get_session = sessionmaker(bind=create_engine(config.get_postgres_uri()))
+get_session = sessionmaker(bind=create_engine('sqlite:///:memory:'))
 app = Flask(__name__)
 @app.route("/", methods=['GET'])
 def home():
