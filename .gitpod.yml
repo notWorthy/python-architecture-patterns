@@ -8,6 +8,7 @@ tasks:
   command: >
     export FLASK_APP=entrypoints/flask_app &&
     export FLASK_ENV=development &&
+    export API_HOST=$(gp url 3000) &&
     flask run -p 3000
 
 vscode:
