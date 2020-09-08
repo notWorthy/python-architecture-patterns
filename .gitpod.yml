@@ -5,7 +5,7 @@ tasks:
 - init: > 
     python3 -m pip install -r requirements.txt 
   command: >
-    export FLASK_APP=src/flask_app &&
+    export FLASK_APP=entrypoints/flask_app &&
     export FLASK_ENV=development &&
     flask run -p 3000
 
