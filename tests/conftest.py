@@ -30,6 +30,7 @@ def session(in_memory_db):
 def wait_for_webapp_to_come_up():
     deadline = time.time() + 10
     url = config.get_api_url()
+    print(url)
     while time.time() < deadline:
         try:
             return requests.get(url)
@@ -40,6 +41,6 @@ def wait_for_webapp_to_come_up():
 
 @pytest.fixture
 def restart_api():
-    (Path(__file__).parent / 'entrypoints/flask_app.py').touch()
+    (Path(__file__).parent / '../entrypoints/flask_app.py').touch()
     time.sleep(0.5)
     wait_for_webapp_to_come_up()

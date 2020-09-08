@@ -6,9 +6,9 @@ tasks:
 - init: > 
     python3 -m pip install -r requirements.txt 
   command: >
-    export FLASK_APP=entrypoints/flask_app &&
-    export FLASK_ENV=development &&
-    export API_HOST=$(gp url 3000) &&
+    gp env FLASK_APP=entrypoints/flask_app &&
+    gp env FLASK_ENV=development &&
+    gp env API_HOST=$(gp url 3000) &&
     flask run -p 3000
 
 vscode:
