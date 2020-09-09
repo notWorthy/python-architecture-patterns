@@ -1,18 +1,16 @@
+image:
+  file: .gitpod.Dockerfile
+
 ports:
-- port: 3000
-  onOpen: open-preview
+  - port: 3000
+    onOpen: open-preview
 
 tasks:
-- init: > 
-    python3 -m pip install -r requirements.txt &&
-    gp env FLASK_APP=entrypoints/flask_app &&
-    gp env FLASK_ENV=development &&
-    gp env API_HOST=$(gp url 3000) &&
+  - init: >
+      python3 -m pip install -r requirements.txt
 
-  command: >
-    eval $(gp env -e) &&
-    flask run -p 3000
-  
+    command: >
+      flask run -p 3000
 
 vscode:
   extensions:
